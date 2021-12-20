@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/tab_background.xml" value="0.2703125" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_login.xml" value="0.14186851211072665" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_login__tab_.xml" value="0.25" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_sign_up__tab_.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
