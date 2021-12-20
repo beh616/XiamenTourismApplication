@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Login_Tab_Fragment extends Fragment {
 
     EditText email, password;
@@ -46,12 +49,12 @@ public class Login_Tab_Fragment extends Fragment {
             public void onClick(View view) {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
-
+                String hashed_password = getMd5Hash(txt_password);
                 if (txt_email.equals("") || txt_password.equals("")) {
                     Toast.makeText(getActivity(), "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 } else if (!database.checkEmail(txt_email)) {
                     Toast.makeText(getActivity(), "Email not exist in database", Toast.LENGTH_SHORT).show();
-                } else if (database.authenticateUser(txt_email, txt_password)) {
+                } else if (database.authenticateUser(txt_email, hashed_password)) {
                     Toast.makeText(getActivity(), "Sign in successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), NavigationActivity.class));
                 } else {
@@ -59,6 +62,30 @@ public class Login_Tab_Fragment extends Fragment {
                 }
             }
         });
+
+    }
+
+    public String getMd5Hash(String password){
+        String md5 = "MD5";
+        try {
+            MessageDigest digest = MessageDigest.getInstance(md5);
+            digest.update(password.getBytes());
+            byte messageDigest[] = digest.digest();
+            StringBuilder hashedPassword = new StringBuilder();
+
+            for(byte adigest: messageDigest){
+                String h = Integer.toHexString(0xFF & adigest);
+                while (h.length() < 2){
+                    h = "0" + h;
+                }
+                hashedPassword.append(h);
+
+            }
+            return hashedPassword.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
 
     }
 }
