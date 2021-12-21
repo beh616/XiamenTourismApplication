@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -13,6 +14,16 @@ public class LoginActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager2;
     LoginAdapter adapter;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        if(sessionManager.checkLogin()){
+            startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

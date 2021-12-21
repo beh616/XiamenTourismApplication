@@ -56,6 +56,12 @@ public class Login_Tab_Fragment extends Fragment {
                     Toast.makeText(getActivity(), "Email not exist in database", Toast.LENGTH_SHORT).show();
                 } else if (database.authenticateUser(txt_email, hashed_password)) {
                     Toast.makeText(getActivity(), "Sign in successfully", Toast.LENGTH_SHORT).show();
+
+//                  Create session
+                    SessionManager sessionManager = new SessionManager(getContext());
+//                    get username from database
+                    String username = database.getUsername(txt_email);
+                    sessionManager.createLoginSession(username,txt_email);
                     startActivity(new Intent(getActivity(), NavigationActivity.class));
                 } else {
                     Toast.makeText(getActivity(), "Sign in failed", Toast.LENGTH_SHORT).show();
