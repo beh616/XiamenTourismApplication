@@ -50,13 +50,18 @@ public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
             String vicinity = nearbyPlace.get("vicinity");
             double latitude = Double.parseDouble(nearbyPlace.get("lat"));
             double longitude = Double.parseDouble(nearbyPlace.get("lng"));
+            String compoundCode = nearbyPlace.get("compound_code");
 
-            LatLng place = new LatLng(latitude, longitude);
-            markerOptions.position(place);
-            markerOptions.title(nameOfPlace + ":" + vicinity);
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            map.addMarker(markerOptions);
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(place, 10));
+//            filter nearby place that is not in Xiamen
+            if(compoundCode.contains("Xiamen")){
+                LatLng place = new LatLng(latitude, longitude);
+                markerOptions.position(place);
+                markerOptions.title(nameOfPlace + ":" + vicinity);
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                map.addMarker(markerOptions);
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(place, 10));
+            }
+
         }
     }
 }

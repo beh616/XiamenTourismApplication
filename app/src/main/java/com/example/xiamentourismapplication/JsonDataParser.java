@@ -16,6 +16,7 @@ public class JsonDataParser {
         String vicinity = "-NA-";
         String latitude = "";
         String longitude = "";
+        String compoundCode ="";
         String reference = "";
 
         try {
@@ -25,14 +26,19 @@ public class JsonDataParser {
             if(!googlePlaceJSON.isNull("vicinity")){
                 vicinity = googlePlaceJSON.getString("vicinity");
             }
+
             latitude = googlePlaceJSON.getJSONObject("geometry").getJSONObject("location").getString("lat");
             longitude = googlePlaceJSON.getJSONObject("geometry").getJSONObject("location").getString("lng");
+            if(!googlePlaceJSON.isNull("plus_code")){
+                compoundCode = googlePlaceJSON.getJSONObject("plus_code").getString("compound_code");
+            }
             reference = googlePlaceJSON.getString("reference");
 
             googlePlaceMap.put("place_name", nameOfPlace);
             googlePlaceMap.put("vicinity", vicinity);
             googlePlaceMap.put("lat", latitude);
             googlePlaceMap.put("lng", longitude);
+            googlePlaceMap.put("compound_code", compoundCode);
             googlePlaceMap.put("reference", reference);
         } catch (JSONException e) {
             e.printStackTrace();

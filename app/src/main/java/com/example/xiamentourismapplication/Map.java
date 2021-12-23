@@ -84,7 +84,7 @@ public class Map extends Fragment implements OnMapReadyCallback, View.OnClickLis
     private Marker userMarker;
     public static final int Request_User_Location_Code = 99;
 
-    private int ProximityRadius = 100000;
+    private int ProximityRadius = 100000; //100km = 100,000 m
 
 
     public Map() {
