@@ -61,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Sign Up"
+        android:backgroundTint="@color/primary_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/et_repass_signUp"
         app:layout_constraintHorizontal_bias="0.0"

@@ -46,9 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Login"
-        app:layout_constraintWidth_percent="0.8"
+        android:backgroundTint="@color/primary_color"
         app:layout_constraintEnd_toEndOf="@+id/et_password_signIn"
         app:layout_constraintStart_toStartOf="@+id/et_password_signIn"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_signIn" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password_signIn"
+        app:layout_constraintWidth_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0"
-            android:background="@drawable/tab_background"/>
+            android:background="@drawable/tab_background"
+            app:tabIndicatorColor="@color/primary_color"
+            app:tabSelectedTextColor="@color/primary_color"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
