@@ -50,7 +50,7 @@ public class Home extends Fragment {
         getDestination();
         recyclerView.setHasFixedSize(true);
         adapter = new DestinationAdapter(getContext(), destinations);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
 
 

@@ -1,6 +1,8 @@
 package com.example.xiamentourismapplication;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.DestinationViewHolder> {
@@ -34,13 +37,16 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
     public void onBindViewHolder(@NonNull DestinationAdapter.DestinationViewHolder holder, int position) {
 
         Destination destination = destinations.get(position);
+        byte[] image = destination.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
         holder.name.setText(destination.getName());
+        holder.image.setImageBitmap(bitmap);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return destinations.size();
     }
 
     public class DestinationViewHolder extends RecyclerView.ViewHolder{
