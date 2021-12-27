@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/btn_background.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/gradient_background_background.xml" value="0.2703125" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1111111111111111" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1111111111111111" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1111111111111111" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/search_bar.xml" value="0.14375" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/tab_background.xml" value="0.2703125" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_login.xml" value="0.14186851211072665" />
@@ -11,7 +15,7 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_navigation.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/destination_card_layout.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_blog.xml" value="0.13020833333333334" />
-        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_destination_description.xml" value="0.12" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_destination_description.xml" value="0.4" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_login__tab_.xml" value="0.536" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_map.xml" value="0.264" />
