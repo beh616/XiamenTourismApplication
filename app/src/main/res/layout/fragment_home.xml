@@ -113,15 +113,149 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/filter_food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#E43536"
             android:clickable="true"
             android:src="@drawable/ic_baseline_fastfood_24"
             android:tooltipText="Food"
-            app:layout_constraintStart_toStartOf="@+id/tv_search"
-            app:layout_constraintTop_toBottomOf="@+id/tv_search" />
+            app:borderWidth="2dp"
+            app:fabCustomSize="65dp"
+            app:layout_constraintEnd_toStartOf="@+id/filter_attraction"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search"
+            app:maxImageSize="40dp"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/filter_attraction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#F4AF01"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_attractions_24"
+            android:tooltipText="Attraction"
+            app:borderWidth="2dp"
+            app:fabCustomSize="65dp"
+            app:layout_constraintEnd_toStartOf="@+id/filter_shopping"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search"
+            app:maxImageSize="40dp"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/filter_shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#0063B5"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_shopping_bag_24"
+            android:tooltipText="Shopping"
+            app:borderWidth="2dp"
+            app:fabCustomSize="65dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search"
+            app:maxImageSize="40dp"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/filter_beach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#2899DC"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_beach_access_24"
+            android:tooltipText="Shopping"
+            app:borderWidth="2dp"
+            app:fabCustomSize="65dp"
+            app:layout_constraintStart_toEndOf="@+id/filter_shopping"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search"
+            app:maxImageSize="40dp"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/filter_museum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#379E47"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_museum_24"
+            android:tooltipText="Shopping"
+            app:borderWidth="2dp"
+            app:fabCustomSize="65dp"
+            app:layout_constraintStart_toEndOf="@+id/filter_beach"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search"
+            app:maxImageSize="40dp"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Food"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/filter_food"
+            app:layout_constraintStart_toStartOf="@+id/filter_food"
+            app:layout_constraintTop_toBottomOf="@+id/filter_food" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Attraction"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/filter_attraction"
+            app:layout_constraintStart_toStartOf="@+id/filter_attraction"
+            app:layout_constraintTop_toBottomOf="@+id/filter_attraction" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Shopping"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/filter_shopping"
+            app:layout_constraintStart_toStartOf="@+id/filter_shopping"
+            app:layout_constraintTop_toBottomOf="@+id/filter_shopping" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Beach"
+            android:textColor="#FAFAFA"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/filter_beach"
+            app:layout_constraintStart_toStartOf="@+id/filter_beach"
+            app:layout_constraintTop_toBottomOf="@+id/filter_beach" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Museum"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/filter_museum"
+            app:layout_constraintStart_toStartOf="@+id/filter_museum"
+            app:layout_constraintTop_toBottomOf="@+id/filter_museum" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

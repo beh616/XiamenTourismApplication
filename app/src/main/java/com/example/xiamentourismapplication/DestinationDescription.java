@@ -62,7 +62,6 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
     private byte[] image;
     private int type_id;
 
-    private final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
     MapView mapView;
     private TextView des_name, des_description, des_address, des_phone, des_hours, des_website;
     private ImageView des_image, btn_back;
@@ -125,16 +124,6 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
         return view;
 
     }
-
-//    private void initiateGoogleMap(Bundle savedInstanceState) {
-//        Bundle mapViewBundle = null;
-//        if(savedInstanceState != null){
-//            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
-//        }
-//
-//
-//
-//    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
