@@ -5,9 +5,7 @@ import java.sql.Blob;
 public class Destination {
 
     int destination_id;
-    String name, address, description, operation_hours;
-    int phone;
-    String website;
+    String name, address, description, operation_hours, phone, website;
     double latitude, longitude;
     byte[] image;
     int type_id;
@@ -15,7 +13,7 @@ public class Destination {
     public Destination() {
     }
 
-    public Destination(int destination_id, String name, String address, String description, String operation_hours, int phone, String website, double latitude, double longitude, byte[] image, int type_id) {
+    public Destination(int destination_id, String name, String address, String description, String operation_hours, String phone, String website, double latitude, double longitude, byte[] image, int type_id) {
         this.destination_id = destination_id;
         this.name = name;
         this.address = address;
@@ -70,11 +68,11 @@ public class Destination {
         this.operation_hours = operation_hours;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

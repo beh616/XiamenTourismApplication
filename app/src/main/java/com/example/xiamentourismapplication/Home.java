@@ -66,7 +66,7 @@ public class Home extends Fragment {
                 String address = cursor.getString(2);
                 String description = cursor.getString(3);
                 String operation_hours = cursor.getString(4);
-                int phone = cursor.getInt(5);
+                String phone = cursor.getString(5);
                 String website = cursor.getString(6);
                 double latitude = cursor.getDouble(7);
                 double longitude = cursor.getDouble(8);
