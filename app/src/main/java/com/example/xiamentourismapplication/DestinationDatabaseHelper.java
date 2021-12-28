@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DestinationDatabaseHelper extends SQLiteOpenHelper {
     //    Declare variable for database, table and column
     public static final String DATABASE_NAME = "XiamenTourism.db";
@@ -37,5 +39,31 @@ public class DestinationDatabaseHelper extends SQLiteOpenHelper {
             cursor = database.rawQuery(query, null);
         }
         return cursor;
+    }
+
+    public Cursor getRecommendDestination(ArrayList<Integer> number_list){
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "Select * from " + TABLE_NAME + " where destination_id in ("
+                + number_list.get(0) + "," + number_list.get(1) + "," + number_list.get(2) + "," + number_list.get(3) + "," + number_list.get(4) + ")";
+        Cursor cursor = null;
+        if(database != null){
+            cursor = database.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    public int getNumberOfRecords(){
+        int limit = 0;
+        String query = "Select COUNT(*) from " + TABLE_NAME;
+        SQLiteDatabase database = this.getReadableDatabase();
+//        get number of records
+        Cursor numberOfRecord = null;
+        if(database != null){
+            numberOfRecord = database.rawQuery(query, null);
+        }
+        if(numberOfRecord.moveToFirst()) {
+            limit = numberOfRecord.getInt(0);
+        }
+        return limit;
     }
 }

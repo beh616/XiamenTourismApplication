@@ -12,6 +12,8 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -190,8 +192,15 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment backFragment = new Home();
-                getParentFragmentManager().beginTransaction().replace(R.id.content, backFragment).commit();
+                if(getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0)
+                {
+                    getActivity().getSupportFragmentManager().popBackStack();
+
+                }
+                else {
+                    Fragment backFragment = new Home();
+                    getParentFragmentManager().beginTransaction().replace(R.id.content, backFragment).commit();
+                }
             }
         });
 

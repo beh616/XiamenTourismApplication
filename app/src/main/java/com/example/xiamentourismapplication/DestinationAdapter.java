@@ -1,5 +1,6 @@
 package com.example.xiamentourismapplication;
 
+import android.app.admin.FactoryResetProtectionPolicy;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -64,8 +65,16 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
                 int type_id = destination.getType_id();
 
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment nextFragment = new DestinationDescription();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(id, name, address, description, operation_hours, phone, website, latitude, longitude, image, type_id), "DestinationDescription").commit();
+                Fragment allDestination = activity.getSupportFragmentManager().findFragmentByTag("AllDestination");
+                if (allDestination != null && allDestination.isVisible()){
+                    Fragment nextFragment = new DestinationDescription();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(id, name, address, description, operation_hours, phone, website, latitude, longitude, image, type_id), "DestinationDescription").addToBackStack("AllDestination").commit();
+                }
+                else{
+                    Fragment nextFragment = new DestinationDescription();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(id, name, address, description, operation_hours, phone, website, latitude, longitude, image, type_id), "DestinationDescription").addToBackStack(null).commit();
+                }
+
             }
         });
     }

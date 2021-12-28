@@ -12,23 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import java.sql.Blob;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 
-public class Home extends Fragment {
+public class AllDestination extends Fragment {
 
     DestinationDatabaseHelper destinationDatabaseHelper;
     ArrayList<Destination> destinations;
     RecyclerView recyclerView;
     DestinationAdapter adapter;
-    Random random;
 
-    public Home() {
+    public AllDestination() {
         // Required empty public constructor
     }
 
@@ -36,45 +31,27 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_all_destination, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = view.findViewById(R.id.randomRecyclerView);
 
+        recyclerView = view.findViewById(R.id.AllRecyclerView);
         destinationDatabaseHelper = new DestinationDatabaseHelper(getContext());
         destinations = new ArrayList<>();
-        random = new Random();
 
-        int random_num = 0;
-        ArrayList<Integer> number_list = new ArrayList<>();
-
-        int limit = destinationDatabaseHelper.getNumberOfRecords();
-        final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
-
-        if(globalVariable.getNumber_list().isEmpty()){
-            for (int i = 0;  i < 5; i++){
-                do{
-                    random_num = random.nextInt(limit) + 1;
-                }while(number_list.contains(random_num));
-                number_list.add(random_num);
-            }
-        }
-        if(!number_list.isEmpty()){
-            globalVariable.setNumber_list(number_list);
-        }
-
-        getRecommendedDestination(globalVariable.getNumber_list());
+        getAllDestination();
         recyclerView.setHasFixedSize(true);
         adapter = new DestinationAdapter(getContext(), destinations);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
+
     }
 
-    public void getRecommendedDestination(ArrayList<Integer> number_list){
-        Cursor cursor = destinationDatabaseHelper.getRecommendDestination(number_list);
+    private void getAllDestination() {
+        Cursor cursor = destinationDatabaseHelper.getAllDestination();
         if(cursor.getCount() != 0){
             while (cursor.moveToNext()){
                 int id = cursor.getInt(0);

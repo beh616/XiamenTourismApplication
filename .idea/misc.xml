@@ -14,9 +14,11 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_navigation.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/destination_card_layout.xml" value="0.264" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_allDestination.xml" value="0.12083333333333333" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_all_destination.xml" value="0.176" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_blog.xml" value="0.13020833333333334" />
-        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_destination_description.xml" value="0.4" />
-        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_destination_description.xml" value="0.29690721649484536" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_login__tab_.xml" value="0.536" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_map.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_profile.xml" value="0.3203125" />

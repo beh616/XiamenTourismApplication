@@ -6,8 +6,8 @@
         android:title="Home" />
     <item
         android:id="@+id/menu_info"
-        android:icon="@drawable/ic_baseline_card_travel_24"
-        android:title="info" />
+        android:icon="@drawable/ic_baseline_list_alt_24"
+        android:title="Destination" />
 
     <item
         android:id="@+id/menu_map"

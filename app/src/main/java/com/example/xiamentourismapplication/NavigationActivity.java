@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.Manifest;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -55,24 +54,30 @@ public class NavigationActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
+            String TAG = "";
             switch (item.getItemId()) {
                 case R.id.menu_home:
                     selectedFragment = new Home();
+                    TAG = "Home";
                     break;
                 case R.id.menu_info:
-                    selectedFragment = new TravelInfo();
+                    selectedFragment = new AllDestination();
+                    TAG = "AllDestination";
                     break;
                 case R.id.menu_map:
                     selectedFragment = new Map();
+                    TAG = "Map";
                     break;
                 case R.id.menu_article:
                     selectedFragment = new Blog();
+
                     break;
                 case R.id.menu_profile:
                     selectedFragment = new Profile();
+                    TAG = "Profile";
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.content, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, selectedFragment, TAG).commit();
             return true;
         }
     };
