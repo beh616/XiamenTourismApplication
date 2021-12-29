@@ -37,7 +37,6 @@ public class Profile extends Fragment {
         Button signOut = view.findViewById(R.id.btn_signOut);
 
         SessionManager manager = new SessionManager(getContext());
-
         HashMap<String, String> userData = manager.getUserDetailFromSession();
 
         String username = userData.get(manager.KEY_USERNAME);

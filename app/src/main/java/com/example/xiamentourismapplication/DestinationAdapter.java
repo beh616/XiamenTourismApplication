@@ -1,9 +1,16 @@
 package com.example.xiamentourismapplication;
 
+import static com.gun0912.tedpermission.TedPermissionUtil.isGranted;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.admin.FactoryResetProtectionPolicy;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,19 +21,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationAvailability;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
 import java.io.ByteArrayInputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.DestinationViewHolder> {
 
     Context context;
+    Activity activity;
     ArrayList<Destination> destinations;
+    GlobalClass globalVariable;
 
-    public DestinationAdapter(Context context, ArrayList<Destination> destinations){
+
+
+    public DestinationAdapter(Context context, Activity activity, ArrayList<Destination> destinations){
         this.context = context;
+        this.activity = activity;
         this.destinations = destinations;
     }
 
@@ -35,8 +56,11 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
     public DestinationAdapter.DestinationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.destination_card_layout, parent, false);
+        globalVariable = (GlobalClass) activity.getApplicationContext();
+
         return new DestinationViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull DestinationAdapter.DestinationViewHolder holder, int position) {
@@ -45,8 +69,21 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
         byte[] image = destination.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
+
+        final DecimalFormat df = new DecimalFormat("0.00");
+        float[] results = new float[1];
+        String distance;
+
+
+        Location.distanceBetween(globalVariable.getLatitude(), globalVariable.longitude, destination.getLatitude(), destination.getLongitude(), results);
+        double distanceInKm = results[0]/1000;
+        distance = df.format(distanceInKm) + " km";
+
+
+
         holder.name.setText(destination.getName());
         holder.image.setImageBitmap(bitmap);
+        holder.distance.setText(distance);
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,14 +101,14 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
                 byte[] image = destination.getImage();
                 int type_id = destination.getType_id();
 
+
+
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment allDestination = activity.getSupportFragmentManager().findFragmentByTag("AllDestination");
                 if (allDestination != null && allDestination.isVisible()){
-                    Fragment nextFragment = new DestinationDescription();
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(id, name, address, description, operation_hours, phone, website, latitude, longitude, image, type_id), "DestinationDescription").addToBackStack("AllDestination").commit();
                 }
                 else{
-                    Fragment nextFragment = new DestinationDescription();
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(id, name, address, description, operation_hours, phone, website, latitude, longitude, image, type_id), "DestinationDescription").addToBackStack(null).commit();
                 }
 

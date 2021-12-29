@@ -68,7 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_baseline_tour_24"
             android:text="Recommended Destination"
+            android:drawableTint="@color/primary_color"
             android:textColor="@color/primary_color"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -87,30 +89,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Destination Near You"
-            android:textColor="@color/primary_color"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/randomRecyclerView" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/nearRecyclerView"
-            android:layout_width="365dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="25dp"
-            android:scrollbars="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/filter_food"
@@ -256,6 +235,86 @@
             app:layout_constraintEnd_toEndOf="@+id/filter_museum"
             app:layout_constraintStart_toStartOf="@+id/filter_museum"
             app:layout_constraintTop_toBottomOf="@+id/filter_museum" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="249dp"
+            android:layout_marginTop="20dp"
+            android:background="#F5F5F5"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/randomRecyclerView">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_baseline_currency_exchange_24"
+                android:drawableTint="@color/primary_color"
+                android:text="Currency Calculator"
+                android:textColor="@color/primary_color"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/currency_spinner"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/et_amount"
+                android:layout_width="179dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/search_bar"
+                android:ems="10"
+                android:hint="Amount"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintStart_toStartOf="@+id/currency_spinner"
+                app:layout_constraintTop_toBottomOf="@+id/currency_spinner" />
+
+            <Button
+                android:id="@+id/btn_calculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/primary_color"
+                android:text="Calculate"
+                app:layout_constraintStart_toEndOf="@+id/et_amount"
+                app:layout_constraintTop_toBottomOf="@+id/currency_spinner" />
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.7"
+                android:layout_height="34dp"
+                android:layout_marginTop="28dp"
+                android:drawableLeft="@drawable/ic_baseline_currency_yuan_24"
+                android:drawableTint="@color/black"
+                android:text="0.00"
+                android:textAlignment="center"
+                android:textColor="#020000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_calculate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

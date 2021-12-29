@@ -66,4 +66,30 @@ public class DestinationDatabaseHelper extends SQLiteOpenHelper {
         }
         return limit;
     }
+
+    public Cursor getFilteredDestination(String type){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "Select table1.* from destination table1 left join detination_type table2 on table1.type_id=table2.type_id where table2.name='" + type + "'";
+        Cursor cursor = null;
+        if(database != null){
+            cursor = database.rawQuery(query, null);
+        }
+        return cursor;
+
+    }
+
+    public boolean checkFavouriteList(int userId, int destination_id){
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "Select * from user_wishlist where user_id="+ userId + ",destination_id=" + destination_id;
+        Cursor cursor = null;
+        if (database != null){
+            database.rawQuery(query, null);
+        }
+        if(cursor.getCount() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

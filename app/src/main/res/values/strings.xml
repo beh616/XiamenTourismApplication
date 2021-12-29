@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">XiamenTourismApplication</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="currency_array">
+        <item>Australian Dollar (AUD)</item>
+        <item>Euro (EUR)</item>
+        <item>South Korean Won (KRW)</item>
+        <item>Malaysian Ringgit (MYR)</item>
+        <item>United States Dollar (USD)</item>
+        <item>New Taiwan Dollar (TWD)</item>
+        <item>Singapore Dollar (SGD)</item>
+    </string-array>
+
 
 </resources>

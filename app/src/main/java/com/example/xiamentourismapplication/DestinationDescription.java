@@ -37,6 +37,8 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.HashMap;
+
 public class DestinationDescription extends Fragment implements OnMapReadyCallback {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "id";
@@ -68,6 +70,9 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
     private TextView des_name, des_description, des_address, des_phone, des_hours, des_website;
     private ImageView des_image, btn_back;
     private Button viewMap, direction;
+
+    private boolean isAddedToWishList = false;
+    private String userId;
 
 //    Variable used to retrieve user location
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -122,6 +127,14 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
+        SessionManager manager = new SessionManager(getContext());
+
+        HashMap<String, String> userData = manager.getUserDetailFromSession();
+        userId = userData.get(manager.KEY_USERID);
+
+        DestinationDatabaseHelper helper = new DestinationDatabaseHelper(getContext());
+        isAddedToWishList = helper.checkFavouriteList(Integer.parseInt(userId), id);
+        System.out.println(isAddedToWishList);
         // Inflate the layout for this fragment
         return view;
 

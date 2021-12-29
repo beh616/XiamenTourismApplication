@@ -13,6 +13,7 @@ public class SessionManager {
 
     private static final String isLogin = "IsloggedIn";
 
+    public static final String KEY_USERID = "id";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_EMAIL = "email";
 
@@ -22,9 +23,10 @@ public class SessionManager {
         editor = usersSession.edit();
     }
 
-    public void createLoginSession(String username, String email){
+    public void createLoginSession(int id,String username, String email){
         editor.putBoolean(isLogin, true);
 //         put user data in SharedPreference
+        editor.putString(KEY_USERID, String.valueOf(id));
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_EMAIL, email);
 
@@ -34,6 +36,7 @@ public class SessionManager {
     public HashMap<String, String> getUserDetailFromSession(){
         HashMap<String, String> userData = new HashMap<String, String>();
 //        get data from SharedPreference and put inside the hash map
+        userData.put(KEY_USERID, usersSession.getString(KEY_USERID,null));
         userData.put(KEY_USERNAME, usersSession.getString(KEY_USERNAME, null));
         userData.put(KEY_EMAIL, usersSession.getString(KEY_EMAIL, null));
 

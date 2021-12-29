@@ -61,7 +61,8 @@ public class Login_Tab_Fragment extends Fragment {
                     SessionManager sessionManager = new SessionManager(getContext());
 //                    get username from database
                     String username = database.getUsername(txt_email);
-                    sessionManager.createLoginSession(username,txt_email);
+                    int id = database.getUserId(txt_email);
+                    sessionManager.createLoginSession(id,username,txt_email);
                     startActivity(new Intent(getActivity(), NavigationActivity.class));
                 } else {
                     Toast.makeText(getActivity(), "Sign in failed", Toast.LENGTH_SHORT).show();
