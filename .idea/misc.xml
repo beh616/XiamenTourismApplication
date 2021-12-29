@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/btn_background.xml" value="0.264" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/comment_background.xml" value="0.2703125" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/gradient_background_background.xml" value="0.2703125" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1111111111111111" />
@@ -14,11 +16,13 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_login.xml" value="0.14186851211072665" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_navigation.xml" value="0.264" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/destination_card_layout.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_allDestination.xml" value="0.12083333333333333" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_all_destination.xml" value="0.176" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_blog.xml" value="0.13020833333333334" />
-        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_destination_description.xml" value="0.264" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_bottom_sheet_dialog.xml" value="0.264" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_destination_description.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_filtered_destination.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_login__tab_.xml" value="0.536" />

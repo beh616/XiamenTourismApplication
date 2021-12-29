@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheetContainer"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textColor="@color/primary_color"
+        android:drawableLeft="@drawable/ic_baseline_favorite_border_24"
+        android:drawableTint="@color/primary_color"
+        android:text="Add to Wishlist"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/secondary_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/destinationImage"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_margin="5dp"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/xiamen"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_destinationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Destination Title"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_destinationAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#555555"
+                android:text="address"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/et_comment"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:overScrollMode="always"
+        android:gravity="top|left"
+        android:lines="6"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:padding="10dp"
+        android:hint="Insert your comment"
+        android:textColorHint="#888888"
+        android:textColor="@color/black"
+        android:background="@drawable/comment_background"
+        android:elevation="5dp" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="10dp"
+        android:text="Add"
+        android:backgroundTint="@color/primary_color"/>
+</LinearLayout>

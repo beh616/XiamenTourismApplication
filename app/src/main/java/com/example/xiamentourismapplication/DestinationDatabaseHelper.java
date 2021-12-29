@@ -80,10 +80,10 @@ public class DestinationDatabaseHelper extends SQLiteOpenHelper {
 
     public boolean checkFavouriteList(int userId, int destination_id){
         SQLiteDatabase database = this.getReadableDatabase();
-        String query = "Select * from user_wishlist where user_id="+ userId + ",destination_id=" + destination_id;
+        String query = "Select * from user_wishlist where user_id="+ userId + " and destination_id=" + destination_id;
         Cursor cursor = null;
         if (database != null){
-            database.rawQuery(query, null);
+            cursor = database.rawQuery(query, null);
         }
         if(cursor.getCount() > 0){
             return true;

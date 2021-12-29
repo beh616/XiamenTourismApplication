@@ -22,8 +22,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -36,10 +39,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.HashMap;
 
-public class DestinationDescription extends Fragment implements OnMapReadyCallback {
+public class DestinationDescription extends Fragment implements OnMapReadyCallback, BottomSheetDialog.FragmentListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "id";
     private static final String ARG_PARAM2 = "name";
@@ -70,9 +75,13 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
     private TextView des_name, des_description, des_address, des_phone, des_hours, des_website;
     private ImageView des_image, btn_back;
     private Button viewMap, direction;
+    private Bitmap bitmap;
 
     private boolean isAddedToWishList = false;
+    WishlistDatabaseHelper databaseHelper;
     private String userId;
+    ImageView favourite;
+    BottomSheetDialog bottomSheetDialogFragment;
 
 //    Variable used to retrieve user location
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -133,8 +142,9 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
         userId = userData.get(manager.KEY_USERID);
 
         DestinationDatabaseHelper helper = new DestinationDatabaseHelper(getContext());
+        databaseHelper = new WishlistDatabaseHelper(getContext());
         isAddedToWishList = helper.checkFavouriteList(Integer.parseInt(userId), id);
-        System.out.println(isAddedToWishList);
+        bottomSheetDialogFragment = BottomSheetDialog.newInstance(this);
         // Inflate the layout for this fragment
         return view;
 
@@ -143,7 +153,6 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         des_image = view.findViewById(R.id.des_image);
         des_name = view.findViewById(R.id.des_name);
@@ -156,9 +165,17 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
         direction = view.findViewById(R.id.btn_direction);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         btn_back = view.findViewById(R.id.btn_back);
+        favourite = view.findViewById(R.id.iv_favourite);
 
-        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+        bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
         des_image.setImageBitmap(bitmap);
+
+        if(isAddedToWishList){
+            favourite.setImageResource(R.drawable.ic_baseline_favorite_24);
+        }
+        else{
+            favourite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+        }
 
         des_name.setText(name);
         des_description.setText(description);
@@ -217,6 +234,24 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
             }
         });
 
+        favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isAddedToWishList){
+
+                    bottomSheetDialogFragment.show(getActivity().getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
+
+                }
+                else{
+                    boolean result = databaseHelper.removeList(id, Integer.parseInt(userId));  //remove record from favourite table
+                    if(result){
+                        isAddedToWishList = false;
+                        favourite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                        Toast.makeText(getContext(), "Removed from wishlist", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
 
     }
 
@@ -296,5 +331,33 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
 
             }
         });
+    }
+
+    @Override
+    public void getView(View view) {
+        ((RoundedImageView)view.findViewById(R.id.destinationImage)).setImageBitmap(bitmap);
+        ((TextView)view.findViewById(R.id.tv_destinationName)).setText(name);
+        ((TextView)view.findViewById(R.id.tv_destinationAddress)).setText(address);
+        ((EditText)view.findViewById(R.id.et_comment)).setText("");
+        ((Button)view.findViewById(R.id.btn_add)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view1) {
+                String txt_comment = ((EditText)view.findViewById(R.id.et_comment)).getText().toString();
+                if(txt_comment.equals("")){
+                    Toast.makeText(getContext(), "Enter your comment", Toast.LENGTH_SHORT);
+                }
+                else{
+                    boolean result = databaseHelper.insertWishlist(id, Integer.parseInt(userId), txt_comment);
+                    if(result) {
+                        Toast.makeText(getActivity(), "Added to wishlist", Toast.LENGTH_SHORT).show();
+                        isAddedToWishList = true;
+                        favourite.setImageResource(R.drawable.ic_baseline_favorite_24);
+                        bottomSheetDialogFragment.dismiss();
+                    }
+                }
+            }
+
+
+            });
     }
 }
