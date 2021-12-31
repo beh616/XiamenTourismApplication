@@ -90,20 +90,20 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
     public DestinationDescription() {
     }
 
-    public static DestinationDescription newInstance(int id, String name, String address, String description, String operation_hours, String phone, String website, double latitude, double longitude, byte[] image, int type_id) {
+    public static DestinationDescription newInstance(Destination destination) {
         DestinationDescription fragment = new DestinationDescription();
         Bundle bundle = new Bundle();
-        bundle.putInt("id", id);
-        bundle.putString("name", name);
-        bundle.putString("address", address);
-        bundle.putString("description", description);
-        bundle.putString("operation_hours", operation_hours);
-        bundle.putString("phone", phone);
-        bundle.putString("website", website);
-        bundle.putDouble("latitude", latitude);
-        bundle.putDouble("longitude", longitude);
-        bundle.putByteArray("image", image);
-        bundle.putInt("type_id", type_id);
+        bundle.putInt("id", destination.getDestination_id());
+        bundle.putString("name", destination.getName());
+        bundle.putString("address", destination.getAddress());
+        bundle.putString("description", destination.getDescription());
+        bundle.putString("operation_hours", destination.getOperation_hours());
+        bundle.putString("phone", destination.getPhone());
+        bundle.putString("website", destination.getWebsite());
+        bundle.putDouble("latitude", destination.getLatitude());
+        bundle.putDouble("longitude", destination.getLongitude());
+        bundle.putByteArray("image", destination.getImage());
+        bundle.putInt("type_id", destination.getType_id());
         fragment.setArguments(bundle);
         return fragment;
     }

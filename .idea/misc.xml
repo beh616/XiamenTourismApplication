@@ -23,13 +23,16 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_blog.xml" value="0.13020833333333334" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_bottom_sheet_dialog.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_destination_description.xml" value="0.2" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_favourite_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_filtered_destination.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_home.xml" value="0.536" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_login__tab_.xml" value="0.536" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_map.xml" value="0.264" />
-        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_sign_up__tab_.xml" value="0.25416666666666665" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_travel_info.xml" value="0.13020833333333334" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_wishlist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/wishlist_card_layout.xml" value="0.4" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/menu/bottom_nav.xml" value="0.1" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/mipmap-anydpi-v26/gradient_background.xml" value="0.15" />
       </map>

@@ -79,6 +79,7 @@
         android:background="@color/grey"/>
 
     <LinearLayout
+        android:id="@+id/btn_wishlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

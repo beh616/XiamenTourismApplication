@@ -88,28 +88,14 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                int id = destination.getDestination_id();
-                String name = destination.getName();
-                String address = destination.getAddress();
-                String description = destination.getDescription();
-                String operation_hours = destination.getOperation_hours();
-                String phone = destination.getPhone();
-                String website = destination.getWebsite();
-                double latitude = destination.getLatitude();
-                double longitude = destination.getLongitude();
-                byte[] image = destination.getImage();
-                int type_id = destination.getType_id();
-
-
 
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment allDestination = activity.getSupportFragmentManager().findFragmentByTag("AllDestination");
                 if (allDestination != null && allDestination.isVisible()){
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(id, name, address, description, operation_hours, phone, website, latitude, longitude, image, type_id), "DestinationDescription").addToBackStack("AllDestination").commit();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(destination), "DestinationDescription").addToBackStack("AllDestination").commit();
                 }
                 else{
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(id, name, address, description, operation_hours, phone, website, latitude, longitude, image, type_id), "DestinationDescription").addToBackStack(null).commit();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, DestinationDescription.newInstance(destination), "DestinationDescription").addToBackStack(null).commit();
                 }
 
             }

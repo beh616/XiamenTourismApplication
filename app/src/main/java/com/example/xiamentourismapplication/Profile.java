@@ -35,14 +35,26 @@ public class Profile extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         LinearLayout signOut = view.findViewById(R.id.btn_signOut);
+        LinearLayout wishlist = view.findViewById(R.id.btn_wishlist);
 
         SessionManager manager = new SessionManager(getContext());
         HashMap<String, String> userData = manager.getUserDetailFromSession();
 
+        String userId = userData.get(manager.KEY_USERID);
         String username = userData.get(manager.KEY_USERNAME);
         String email = userData.get(manager.KEY_EMAIL);
 
 //        profile.setText("Username: " + username);
+
+        wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.content, Wishlist.newInstance(Integer.parseInt(userId)))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,5 +63,7 @@ public class Profile extends Fragment {
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
+
+
     }
 }
