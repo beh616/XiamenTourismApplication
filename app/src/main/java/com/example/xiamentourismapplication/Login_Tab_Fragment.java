@@ -1,7 +1,6 @@
 package com.example.xiamentourismapplication;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +21,7 @@ public class Login_Tab_Fragment extends Fragment {
 
     EditText email, password;
     Button login;
-    DatabaseHelper database;
+    UserDatabaseHelper database;
 
     public Login_Tab_Fragment() {
     }
@@ -42,7 +41,7 @@ public class Login_Tab_Fragment extends Fragment {
         password = view.findViewById(R.id.et_password_signIn);
         login = view.findViewById(R.id.btn_login);
 
-        database = new DatabaseHelper(getContext());
+        database = new UserDatabaseHelper(getContext());
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class Wishlist extends Fragment {
     ArrayList<Wish> wishlist;
     RecyclerView recyclerView;
     WishlistAdapter adapter;
+    ImageView btn_back;
 
     public Wishlist() {
         // Required empty public constructor
@@ -50,6 +52,7 @@ public class Wishlist extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wishlist, container, false);
         recyclerView = view.findViewById(R.id.wish_recycler_view);
+        btn_back = view.findViewById(R.id.btn_back_wishlist);
         wishlistDatabaseHelper = new WishlistDatabaseHelper(getContext());
         wishlist = new ArrayList<>();
         destinations = new ArrayList<>();
@@ -61,6 +64,12 @@ public class Wishlist extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
 
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
         return view;
     }
 

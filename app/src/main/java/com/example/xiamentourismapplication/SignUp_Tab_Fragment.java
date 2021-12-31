@@ -21,7 +21,7 @@ public class SignUp_Tab_Fragment extends Fragment {
 
     EditText username, email, password, repassword;
     Button signUp;
-    DatabaseHelper database;
+    UserDatabaseHelper database;
 
     public SignUp_Tab_Fragment() {
         // Required empty public constructor
@@ -44,7 +44,7 @@ public class SignUp_Tab_Fragment extends Fragment {
         repassword = view.findViewById(R.id.et_repass_signUp);
         signUp = view.findViewById(R.id.btn_signUp);
 
-        database = new DatabaseHelper(getContext());
+        database = new UserDatabaseHelper(getContext());
 
 //        email set when entering
 

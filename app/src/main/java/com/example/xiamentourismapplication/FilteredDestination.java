@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class FilteredDestination extends Fragment {
     private String type;
 
     TextView title;
-    Button btn_back;
+    ImageView btn_back;
     DestinationDatabaseHelper destinationDatabaseHelper;
     ArrayList<Destination> destinations;
     RecyclerView recyclerView;
@@ -64,6 +65,7 @@ public class FilteredDestination extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         title = view.findViewById(R.id.tv_title);
         recyclerView = view.findViewById(R.id.FilteredRecyclerView);
+        btn_back = view.findViewById(R.id.btn_back_filter);
         destinations = new ArrayList<>();
         destinationDatabaseHelper = new DestinationDatabaseHelper(getContext());
         String fragmentTitle = capitalizedTitle();
@@ -75,6 +77,13 @@ public class FilteredDestination extends Fragment {
         adapter = new DestinationAdapter(getContext(), getActivity(), destinations);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
     }
 
     private String capitalizedTitle() {

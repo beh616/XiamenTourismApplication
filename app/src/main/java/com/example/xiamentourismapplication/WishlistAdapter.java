@@ -112,6 +112,23 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
             }
         });
 
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wish_id = wishlist.get(holder.getAdapterPosition()).getWish_id();
+                boolean result = wishlistDatabaseHelper.removeListById(wish_id);
+                if (result){
+                    name = destinations.get(holder.getAdapterPosition()).getName();
+                    wishlist.remove(holder.getAdapterPosition());
+                    notifyItemRemoved(holder.getAdapterPosition());
+                    notifyItemChanged(holder.getAdapterPosition(), getItemCount());
+                    Toast.makeText(context, name + " has been removed", Toast.LENGTH_SHORT).show();
+
+
+                }
+            }
+        });
+
     }
 
     @Override

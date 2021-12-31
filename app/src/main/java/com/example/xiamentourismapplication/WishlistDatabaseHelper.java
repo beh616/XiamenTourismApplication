@@ -50,10 +50,16 @@ public class WishlistDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-//    remove from wishlist
+//    remove from wishlist using destination_id and user_id
     public boolean removeList(int destination_id, int user_id){
         SQLiteDatabase database = this.getWritableDatabase();
         return database.delete(TABLE_NAME, COLUMN_2 + "=" + destination_id + " and " + COLUMN_3 + "=" + user_id, null) > 0;
+    }
+
+    //    remove from wishlist using wish_id
+    public boolean removeListById(int wish_id){
+        SQLiteDatabase database = this.getWritableDatabase();
+        return database.delete(TABLE_NAME, COLUMN_1 + "=" + wish_id, null) > 0;
     }
 
 //    retrieve all the destination that added to wishlist of a user

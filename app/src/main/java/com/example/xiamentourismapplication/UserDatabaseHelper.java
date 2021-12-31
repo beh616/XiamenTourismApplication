@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class DatabaseHelper extends SQLiteOpenHelper{
+public class UserDatabaseHelper extends SQLiteOpenHelper{
     //    Declare variable for database, table and column
     public static final String DATABASE_NAME = "XiamenTourism.db";
     public static final String TABLE_NAME = "user_table";
@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String COLUMN_3 = "email";
     public static final String COLUMN_4 = "password";
 
-    public DatabaseHelper(@Nullable Context context) {
+    public UserDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
     }
@@ -96,4 +96,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
         return userId;
     }
+
+    public int updateEmail(){
+        return 0;
+    }
+
+
 }
