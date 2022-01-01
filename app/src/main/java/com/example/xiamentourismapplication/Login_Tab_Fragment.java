@@ -48,7 +48,8 @@ public class Login_Tab_Fragment extends Fragment {
             public void onClick(View view) {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
-                String hashed_password = getMd5Hash(txt_password);
+                Md5Hash hash = new Md5Hash();
+                String hashed_password = hash.getMd5Hash(txt_password);
                 if (txt_email.equals("") || txt_password.equals("")) {
                     Toast.makeText(getActivity(), "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 } else if (!database.checkEmail(txt_email)) {
@@ -71,27 +72,5 @@ public class Login_Tab_Fragment extends Fragment {
 
     }
 
-    public String getMd5Hash(String password){
-        String md5 = "MD5";
-        try {
-            MessageDigest digest = MessageDigest.getInstance(md5);
-            digest.update(password.getBytes());
-            byte messageDigest[] = digest.digest();
-            StringBuilder hashedPassword = new StringBuilder();
 
-            for(byte adigest: messageDigest){
-                String h = Integer.toHexString(0xFF & adigest);
-                while (h.length() < 2){
-                    h = "0" + h;
-                }
-                hashedPassword.append(h);
-
-            }
-            return hashedPassword.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
-
-    }
 }

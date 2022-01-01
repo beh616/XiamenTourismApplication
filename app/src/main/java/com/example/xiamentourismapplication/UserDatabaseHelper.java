@@ -97,9 +97,24 @@ public class UserDatabaseHelper extends SQLiteOpenHelper{
         return userId;
     }
 
-    public int updateEmail(){
-        return 0;
+    public int updateEmail(String userId, String email){
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_3, email);
+
+        return database.update(TABLE_NAME, contentValues, COLUMN_1 + "=?", new String[]{userId});
     }
+
+    public int changePassword(String userId, String password){
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_4, password);
+
+        return database.update(TABLE_NAME, contentValues, COLUMN_1 + "=?", new String[]{userId});
+    }
+
 
 
 }

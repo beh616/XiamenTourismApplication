@@ -44,7 +44,7 @@ public class SessionManager {
     }
 
     public boolean checkLogin(){
-        if(usersSession.getBoolean(isLogin, true)){
+        if(usersSession.getBoolean(isLogin, true) && usersSession.getString(KEY_USERID, null) != null){
             return true;
         }
         else{
@@ -56,6 +56,11 @@ public class SessionManager {
 //        sign out from the session
         editor.putBoolean(isLogin, false);
         editor.clear();
+        editor.commit();
+    }
+
+    public void updateEmail(String email){
+        editor.putString(KEY_EMAIL, email);
         editor.commit();
     }
 }

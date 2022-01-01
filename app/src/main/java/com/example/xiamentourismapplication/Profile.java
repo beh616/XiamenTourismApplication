@@ -36,6 +36,8 @@ public class Profile extends Fragment {
 
         LinearLayout signOut = view.findViewById(R.id.btn_signOut);
         LinearLayout wishlist = view.findViewById(R.id.btn_wishlist);
+        LinearLayout updateEmail = view.findViewById(R.id.btn_update);
+        LinearLayout changePassword = view.findViewById(R.id.btn_change);
 
         SessionManager manager = new SessionManager(getContext());
         HashMap<String, String> userData = manager.getUserDetailFromSession();
@@ -45,6 +47,27 @@ public class Profile extends Fragment {
         String email = userData.get(manager.KEY_EMAIL);
 
 //        profile.setText("Username: " + username);
+
+
+        updateEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.content, UpdateEmail.newInstance(userId, email))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.content, ChangePassword.newInstance(userId, email))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         wishlist.setOnClickListener(new View.OnClickListener() {
             @Override

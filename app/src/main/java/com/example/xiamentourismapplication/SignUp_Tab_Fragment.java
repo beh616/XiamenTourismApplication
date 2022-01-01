@@ -65,7 +65,7 @@ public class SignUp_Tab_Fragment extends Fragment {
                         Toast.makeText(getActivity(), "The passwords not match", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        String hashed_password = getMd5Hash(txt_password);
+                        String hashed_password = new Md5Hash().getMd5Hash(txt_password);
                         if(database.createUser(txt_username, txt_email, hashed_password))
                         {
                             Toast.makeText(getActivity(), "Sign up successfully", Toast.LENGTH_SHORT).show();
@@ -78,29 +78,5 @@ public class SignUp_Tab_Fragment extends Fragment {
                 }
             }
         });
-    }
-//    hash password with MD5 algorithm
-    public String getMd5Hash(String password){
-        String md5 = "MD5";
-        try {
-            MessageDigest digest = MessageDigest.getInstance(md5);
-            digest.update(password.getBytes());
-            byte messageDigest[] = digest.digest();
-            StringBuilder hashedPassword = new StringBuilder();
-
-            for(byte adigest: messageDigest){
-                String h = Integer.toHexString(0xFF & adigest);
-                while (h.length() < 2){
-                    h = "0" + h;
-                }
-                hashedPassword.append(h);
-
-            }
-            return hashedPassword.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
-
     }
 }
