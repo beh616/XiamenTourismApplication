@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController;
 
@@ -69,8 +71,9 @@ public class VideoView extends Fragment {
 
         YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_video);
         getLifecycle().addObserver(youTubePlayerView);
+        youTubePlayerView.setEnableAutomaticInitialization(false);
 
-        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+        YouTubePlayerListener listener = new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
                 DefaultPlayerUiController defaultPlayerUiController = new DefaultPlayerUiController(youTubePlayerView, youTubePlayer);
@@ -78,8 +81,11 @@ public class VideoView extends Fragment {
 //                put url which is the videoId
                 youTubePlayer.cueVideo(url, 0); //so youtube video will not auto-play
             }
-        });
+        };
 
+        // disable iframe ui
+        IFramePlayerOptions options = new IFramePlayerOptions.Builder().controls(0).build();
+        youTubePlayerView.initialize(listener, options);
         return view;
     }
 }
