@@ -7,6 +7,7 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/btn_background.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/comment_background.xml" value="0.2703125" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/gradient_background_background.xml" value="0.2703125" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.14583333333333334" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1111111111111111" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1111111111111111" />
@@ -37,6 +38,8 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_travel_info.xml" value="0.13020833333333334" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_travel_tip.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_update_email.xml" value="0.2" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_video_view.xml" value="0.264" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_web_view.xml" value="0.176" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_wishlist.xml" value="0.25416666666666665" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/tip_card_layout.xml" value="0.4" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/wishlist_card_layout.xml" value="0.176" />

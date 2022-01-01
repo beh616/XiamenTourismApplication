@@ -54,6 +54,22 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.TipViewHolder>{
         holder.title.setText(tip.getTitle());
         holder.author.setText("by "+tip.getAuthor());
         holder.tag.setText(tip.getType());
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                int position = holder.getAdapterPosition();
+                if(tip.getType().equals("website")){
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, WebView.newInstance(tips.get(position)
+                            .getUrl())).addToBackStack(null).commit();
+                }
+                else{
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, VideoView.newInstance(tips.get(position)
+                            .getUrl(), tips.get(position).getTitle())).addToBackStack(null).commit();
+                }
+            }
+        });
     }
 
     @Override
