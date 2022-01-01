@@ -69,7 +69,7 @@ public class NavigationActivity extends AppCompatActivity {
                     TAG = "Map";
                     break;
                 case R.id.menu_article:
-                    selectedFragment = new Blog();
+                    selectedFragment = new TravelTip();
 
                     break;
                 case R.id.menu_profile:

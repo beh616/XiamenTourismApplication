@@ -11,9 +11,11 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1111111111111111" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1111111111111111" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1111111111111111" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/ic_tips.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/input_field_background.xml" value="0.11041666666666666" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/search_bar.xml" value="0.14375" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/tab_background.xml" value="0.2703125" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/drawable/tag_background.xml" value="0.14947916666666666" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_login.xml" value="0.14186851211072665" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/activity_navigation.xml" value="0.264" />
@@ -33,9 +35,11 @@
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_sign_up__tab_.xml" value="0.25416666666666665" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_travel_info.xml" value="0.13020833333333334" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_travel_tip.xml" value="0.264" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_update_email.xml" value="0.2" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/fragment_wishlist.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/wishlist_card_layout.xml" value="0.4" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/tip_card_layout.xml" value="0.4" />
+        <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/layout/wishlist_card_layout.xml" value="0.176" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/menu/bottom_nav.xml" value="0.1" />
         <entry key="..\:/Android_Practical/XiamenTourismApplication/app/src/main/res/mipmap-anydpi-v26/gradient_background.xml" value="0.15" />
       </map>
