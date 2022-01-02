@@ -18,11 +18,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFram
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link VideoView#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class VideoView extends Fragment {
 
     private static final String ARG_PARAM1 = "url";

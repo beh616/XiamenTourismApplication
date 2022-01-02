@@ -6,6 +6,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.location.Location;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,13 +16,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +55,8 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
 //    Variable used in Currency Calculator
     Spinner currency;
     Button calculate;
-    EditText amount;
+    EditText amount, search;
+    ImageView btn_search;
     TextView result;
     String selectedCurrency = "";
 
@@ -92,6 +97,8 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
         amount = view.findViewById(R.id.et_amount);
         calculate = view.findViewById(R.id.btn_calculate);
         result = view.findViewById(R.id.tv_result);
+        search = view.findViewById(R.id.et_search);
+        btn_search = view.findViewById(R.id.image_search);
 
         destinationDatabaseHelper = new DestinationDatabaseHelper(getContext());
         destinations = new ArrayList<>();
@@ -131,6 +138,47 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
         shopping.setOnClickListener(this);
 
         currency.setOnItemSelectedListener(this);
+
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                boolean handled = false;
+                if(i == EditorInfo.IME_ACTION_SEARCH){
+                    String searchQuery = search.getText().toString();
+                    if (searchQuery.equals("")){
+                        Toast.makeText(getContext(), "Please enter destination name", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                    else{
+                        Bundle bundle = new Bundle();
+                        bundle.putString("query", searchQuery);
+                        Fragment fragment = new AllDestination();
+                        fragment.setArguments(bundle);
+                        getParentFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
+                        handled = true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String searchQuery = search.getText().toString();
+                if (searchQuery.equals("")) {
+                    Toast.makeText(getContext(), "Please enter destination name", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("query", searchQuery);
+                    Fragment fragment = new AllDestination();
+                    fragment.setArguments(bundle);
+                    getParentFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
+                }
+
+            }
+        });
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
