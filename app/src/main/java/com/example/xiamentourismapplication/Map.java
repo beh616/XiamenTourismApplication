@@ -34,6 +34,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
@@ -49,8 +50,7 @@ import java.util.List;
 public class Map extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
     private ImageButton attraction, food, hotel, hospital, police, bus, railway;
-//    private static final String TAG = MapsActivityCurrentPlace.class.getSimpleName();
-//    private CameraPosition cameraPosition;
+
     private double latitude, longitude;
     private GoogleMap map;
     private UiSettings uiSettings;
@@ -70,7 +70,7 @@ public class Map extends Fragment implements OnMapReadyCallback, View.OnClickLis
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
                 LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                userMarker = map.addMarker(new MarkerOptions().position(userLocation).title("Your current location"));
+                userMarker = map.addMarker(new MarkerOptions().position(userLocation).title("Your current location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)).zIndex(1.0f));
 
             }
         }
@@ -149,9 +149,6 @@ public class Map extends Fragment implements OnMapReadyCallback, View.OnClickLis
         if(isGranted(Manifest.permission.ACCESS_FINE_LOCATION)){
             checkSettingsAndStartLocationUpdates();
         }
-        else{
-            askPermission();
-        }
     }
 
     @SuppressLint("MissingPermission")
@@ -177,6 +174,9 @@ public class Map extends Fragment implements OnMapReadyCallback, View.OnClickLis
         }
         else{
             askPermission();
+//            default location marker in location(24.480949192070508, 118.09009362798139)
+            map.addMarker(new MarkerOptions().position(Xiamen).title("Xiamen"));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(Xiamen, 15));
         }
     }
 
@@ -188,10 +188,11 @@ public class Map extends Fragment implements OnMapReadyCallback, View.OnClickLis
             public void onSuccess(@NonNull Location location) {
                 if (location != null){
                     LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                    map.addMarker(new MarkerOptions().position(userLocation).title("Initial Point"));
+                    map.addMarker(new MarkerOptions().position(userLocation).title("Initial Point").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
                 }
                 else{
+                    //            default location marker in location(24.480949192070508, 118.09009362798139)
                     map.addMarker(new MarkerOptions().position(Xiamen).title("Xiamen"));
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(Xiamen, 15));
                 }

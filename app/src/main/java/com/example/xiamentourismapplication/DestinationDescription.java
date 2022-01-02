@@ -35,6 +35,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -216,6 +217,9 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
                     intent.setPackage("com.google.android.apps.maps");
                     startActivity(intent);
                 }
+                else{
+                    Toast.makeText(getContext(), "Permission is not granted", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -271,7 +275,7 @@ public class DestinationDescription extends Fragment implements OnMapReadyCallba
         if(isGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
             getLastLocation();
         }
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(name));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude), 15));
     }
 

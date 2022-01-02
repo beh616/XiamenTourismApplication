@@ -59,24 +59,29 @@ public class SignUp_Tab_Fragment extends Fragment {
                 if(txt_username.equals("") || txt_email.equals("") || txt_password.equals("") || txt_repass.equals("")){
                     Toast.makeText(getActivity(), "Please Enter all the fields",Toast.LENGTH_SHORT).show();
                 }
+                else if(!txt_password.equals(txt_repass))
+                {
+                    Toast.makeText(getActivity(), "The passwords not match", Toast.LENGTH_SHORT).show();
+                }
+                else if(database.checkEmail(txt_email)) {
+                    Toast.makeText(getActivity(), "The email have been used before", Toast.LENGTH_SHORT).show();
+                }
                 else{
-                    if(!txt_password.equals(txt_repass))
-                    {
-                        Toast.makeText(getActivity(), "The passwords not match", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
                         String hashed_password = new Md5Hash().getMd5Hash(txt_password);
                         if(database.createUser(txt_username, txt_email, hashed_password))
                         {
+                            SessionManager sessionManager = new SessionManager(getContext());
                             Toast.makeText(getActivity(), "Sign up successfully", Toast.LENGTH_SHORT).show();
+                            int id = database.getUserId(txt_email);
+                            sessionManager.createLoginSession(id,txt_username,txt_email);
                             startActivity(new Intent(getActivity(), NavigationActivity.class));
+                            getActivity().finish();
                         }
                         else{
                             Toast.makeText(getActivity(), "Sign up failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-            }
         });
     }
 }

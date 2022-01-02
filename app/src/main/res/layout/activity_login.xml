@@ -26,7 +26,7 @@
         android:background="@drawable/tab_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.78"
+        app:layout_constraintHeight_percent="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1">
@@ -37,10 +37,11 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintHeight_percent="0.8"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_tab"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/login_tab"

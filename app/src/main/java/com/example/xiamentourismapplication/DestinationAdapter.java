@@ -75,7 +75,7 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
         String distance;
 
 
-        Location.distanceBetween(globalVariable.getLatitude(), globalVariable.longitude, destination.getLatitude(), destination.getLongitude(), results);
+        Location.distanceBetween(globalVariable.getLatitude(), globalVariable.getLongitude(), destination.getLatitude(), destination.getLongitude(), results);
         double distanceInKm = results[0]/1000;
         distance = df.format(distanceInKm) + " km";
 

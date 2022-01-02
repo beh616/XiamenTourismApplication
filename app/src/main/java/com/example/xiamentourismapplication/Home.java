@@ -60,9 +60,7 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
     TextView result;
     String selectedCurrency = "";
 
-    //    Variable used to retrieve user location
-    private FusedLocationProviderClient fusedLocationProviderClient;
-    private double userLatitude = 0, userLongitude = 0;
+
 
 
     public Home() {
@@ -70,17 +68,17 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        globalVariable = (GlobalClass) getActivity().getApplicationContext();
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        if(isGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
-            if (userLatitude == 0 && userLongitude == 0) {
-                getLastLocation();
-            }
-        }
+
         return view;
     }
 
@@ -99,6 +97,9 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
         result = view.findViewById(R.id.tv_result);
         search = view.findViewById(R.id.et_search);
         btn_search = view.findViewById(R.id.image_search);
+
+        globalVariable = (GlobalClass) getActivity().getApplicationContext();
+
 
         destinationDatabaseHelper = new DestinationDatabaseHelper(getContext());
         destinations = new ArrayList<>();
@@ -253,28 +254,7 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, FilteredDestination.newInstance(category)).addToBackStack(null).commit();
     }
 
-    //    get user current location
-    @SuppressLint("MissingPermission")
-    private void getLastLocation() {
-        fusedLocationProviderClient.getLocationAvailability().addOnSuccessListener(new OnSuccessListener<LocationAvailability>() {
-            @Override
-            public void onSuccess(@NonNull LocationAvailability locationAvailability) {
-                if(locationAvailability.isLocationAvailable()){
-                    Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
-                    locationTask.addOnCompleteListener(new OnCompleteListener<Location>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Location> task) {
-                            Location location = task.getResult();
-                            userLatitude = location.getLatitude();
-                            userLongitude = location.getLongitude();
-                            globalVariable.setLatitude(userLatitude);
-                            globalVariable.setLongitude(userLongitude);
-                        }
-                    });
-                }
-            }
-        });
-    }
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

@@ -15,9 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.XiamenTourismApplication">
-        <activity
-            android:name=".SearchableActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -25,11 +22,12 @@
 
         <activity
             android:name=".NavigationActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".LoginActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+         android:name=".LoginActivity"
+         android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

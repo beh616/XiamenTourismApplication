@@ -1,12 +1,24 @@
 package com.example.xiamentourismapplication;
 
+import static com.gun0912.tedpermission.TedPermissionUtil.isGranted;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationAvailability;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 
 public class LoginActivity extends AppCompatActivity {
@@ -15,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     ViewPager2 viewPager2;
     LoginAdapter adapter;
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -22,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         if(sessionManager.checkLogin()){
             startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+            finish();
         }
     }
 
@@ -65,4 +79,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+
 }
