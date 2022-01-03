@@ -39,6 +39,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 
@@ -100,6 +101,10 @@ public class Home extends Fragment implements View.OnClickListener, AdapterView.
 
         globalVariable = (GlobalClass) getActivity().getApplicationContext();
 
+        SessionManager manager = new SessionManager(getContext());
+        HashMap<String, String> userData = manager.getUserDetailFromSession();
+        String name = userData.get(manager.KEY_USERNAME);
+        Toast.makeText(getContext(), "Welcome " + name, Toast.LENGTH_SHORT).show();
 
         destinationDatabaseHelper = new DestinationDatabaseHelper(getContext());
         destinations = new ArrayList<>();

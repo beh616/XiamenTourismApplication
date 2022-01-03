@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class UpdateEmail extends Fragment {
 
@@ -69,6 +72,9 @@ public class UpdateEmail extends Fragment {
             public void onClick(View view) {
                 String txt_password = password.getText().toString();
                 String txt_newEmail = newEmail.getText().toString();
+                final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+                Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+                Matcher matcher = pattern.matcher(txt_newEmail);
 
                 if (txt_password.equals("") || txt_newEmail.equals(""))
                 {
@@ -77,6 +83,9 @@ public class UpdateEmail extends Fragment {
                 else if(txt_newEmail.equals(email))
                 {
                     Toast.makeText(getContext(), "Please enter a new email", Toast.LENGTH_SHORT).show();
+                }
+                else if(!matcher.matches()){
+                    Toast.makeText(getContext(), "Please enter a valid email", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     String hashedPassword = new Md5Hash().getMd5Hash(txt_password);

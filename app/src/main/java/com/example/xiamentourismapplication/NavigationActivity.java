@@ -24,6 +24,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class NavigationActivity extends AppCompatActivity {
@@ -53,6 +54,8 @@ public class NavigationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_navigation);
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_nav);
@@ -65,6 +68,9 @@ public class NavigationActivity extends AppCompatActivity {
             @Override
             public void onPermissionGranted() {
                 Toast.makeText(NavigationActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                if (userLatitude == 0 && userLongitude == 0) {
+                    getLastLocation();
+                }
             }
 
             @Override

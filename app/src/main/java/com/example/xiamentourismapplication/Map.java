@@ -239,6 +239,8 @@ public class Map extends Fragment implements OnMapReadyCallback, View.OnClickLis
             @Override
             public void onPermissionGranted() {
                 Toast.makeText(getActivity(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                getLastLocation();
+                checkSettingsAndStartLocationUpdates();
             }
 
             @Override

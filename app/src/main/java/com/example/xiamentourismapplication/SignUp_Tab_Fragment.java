@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUp_Tab_Fragment extends Fragment {
 
@@ -55,9 +57,16 @@ public class SignUp_Tab_Fragment extends Fragment {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
                 String txt_repass = repassword.getText().toString();
+                final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+                Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+                Matcher matcher = pattern.matcher(txt_email);
 
                 if(txt_username.equals("") || txt_email.equals("") || txt_password.equals("") || txt_repass.equals("")){
                     Toast.makeText(getActivity(), "Please Enter all the fields",Toast.LENGTH_SHORT).show();
+                }
+                else if(!matcher.matches())
+                {
+                    Toast.makeText(getActivity(), "Please enter a valid email", Toast.LENGTH_SHORT).show();
                 }
                 else if(!txt_password.equals(txt_repass))
                 {
