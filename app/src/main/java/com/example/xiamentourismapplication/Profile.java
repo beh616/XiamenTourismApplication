@@ -43,11 +43,7 @@ public class Profile extends Fragment {
         HashMap<String, String> userData = manager.getUserDetailFromSession();
 
         String userId = userData.get(manager.KEY_USERID);
-        String username = userData.get(manager.KEY_USERNAME);
         String email = userData.get(manager.KEY_EMAIL);
-
-//        profile.setText("Username: " + username);
-
 
         updateEmail.setOnClickListener(new View.OnClickListener() {
             @Override

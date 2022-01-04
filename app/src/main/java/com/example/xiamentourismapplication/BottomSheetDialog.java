@@ -13,11 +13,6 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BottomSheetDialog#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BottomSheetDialog extends BottomSheetDialogFragment {
 
 
