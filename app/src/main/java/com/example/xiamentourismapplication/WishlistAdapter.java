@@ -56,7 +56,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
 
     @Override
     public void onBindViewHolder(@NonNull WishlistAdapter.WishlistViewHolder holder, int position) {
-        Wish wish = wishlist.get(holder.getAdapterPosition());
+        Wish wish = wishlist.get(position);
 
         int destination_id = wish.getDestination_id();
         Destination destination = destinations.get(position);
